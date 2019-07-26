@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Layout
 extension MainController {
-
+    
     func setupSplashView() {
         prepareSplashView()
         prepareSplashTitleLabel()
@@ -33,10 +33,12 @@ extension MainController {
         let titleLabel: UILabel = {
             let label = UILabel()
             label.text  = "KHARAN"
-            label.textColor = UIColor.blue
-            label.font = UIFont(name: "Zing Rust Demo Base", size: 60)
+            label.textColor = UIColor(patternImage: UIImage (imageLiteralResourceName: "CoolBlue"))
+            label.font = UIFont(name: "Zapfino", size: 32)
+            label.shadowColor = UIColor.white
+            label.shadowOffset = CGSize(width: 1, height: 2)
             label.numberOfLines = 0
-            label.textAlignment = .center
+            label.textAlignment = .left
             return label
         }()
         view.addSubview(titleLabel)

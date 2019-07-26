@@ -8,10 +8,13 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class MainController: UIViewController {
     var currentScreen: screen = screen.initial
     var currentView: UIView = UIView()
+    private var audioPlayer = AVAudioPlayer()
+    private var bgSound = NSURL(fileURLWithPath:Bundle.main.path(forResource: "Title", ofType: "wav")!)
     
     override func loadView() {
         super.loadView()
@@ -41,21 +44,24 @@ extension MainController {
         case .splash:
             clearView()
             setupTitleView()
+            playSound()
             currentScreen = .title
             break
         case .title:
             clearView()
             setupGameView()
+            audioPlayer.pause()
             currentScreen = .game
             break
         case .game:
             setupTitleView()
+            audioPlayer.play()
             currentScreen = .title
             break
         }
     }
     
-    private func setupGameView() {
+    func setupGameView() {
         let skView: SKView = self.view as! SKView
         skView.showsFPS = false
         skView.showsNodeCount = false
@@ -70,6 +76,16 @@ extension MainController {
         while let subview = view.subviews.last {
             subview.removeFromSuperview()
         }
+    }
+    
+    private func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: bgSound as URL)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Problem in getting File")
+        }
+        audioPlayer.play()
     }
 }
 

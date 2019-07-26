@@ -7,11 +7,14 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class MainScene: SKScene, SKPhysicsContactDelegate {
     var viewController: MainController!
-    var bg = SKSpriteNode()
-    var bgFrames: [SKTexture] = []
+    private var bg = SKSpriteNode()
+    private var bgFrames: [SKTexture] = []
+    private var pd = SKSpriteNode()
+    private var pdFrames: [SKTexture] = []
     private let statusBar = UIApplication.shared.statusBarFrame.height;
     private var player: SKSpriteNode = SKSpriteNode()
     private var points: Int = Int()
@@ -19,11 +22,17 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
     private var timer: TimeInterval = TimeInterval()
     private var pos: CGPoint = CGPoint()
     private var newPos: CGPoint = CGPoint()
+    private var alive: Bool = true
+    private var audioPlayer = AVAudioPlayer()
+    private var ringSound = SKAction.playSoundFileNamed("Ring", waitForCompletion: false)
+    private var bombSound = SKAction.playSoundFileNamed("Bomb", waitForCompletion: false)
+    private var bgSound = NSURL(fileURLWithPath:Bundle.main.path(forResource: "Background", ofType: "wav")!)
     
     let pointsLabel: SKLabelNode = {
         let label = SKLabelNode()
         label.text = "0"
         label.fontColor = UIColor.white
+        label.fontName = "Marion-Regular"
         label.fontSize = 45
         label.horizontalAlignmentMode = .right
         return label
@@ -55,13 +64,15 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
             timeUpdate = 1/60
             update = currentTime
         }
-        
-        updateTime(timeUpdate: timeUpdate)
+        if (alive) {
+            updateTime(timeUpdate: timeUpdate)
+        }
     }
     
     override func didMove(to view: SKView) {
         buildBackground()
         animateBackground()
+        playSound()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -95,19 +106,41 @@ class MainScene: SKScene, SKPhysicsContactDelegate {
 extension MainScene {
     //GameFunc
     private func hitRing(ring: SKSpriteNode) {
+        run(ringSound)
         ring.removeFromParent()
         points += 1
         self.pointsLabel.text = String(points)
     }
     
     private func hitBomb(bomb: SKSpriteNode) {
+        alive = false
+        run(bombSound)
+        gameOver()
+        let nodeA = self.childNode(withName: "Back")!
+        let nodeB = self.childNode(withName: "Box")!
         let over = SKSpriteNode(imageNamed: "Over")
-        over.position = player.position
+        let fot:SKAction = SKAction.fadeOut(withDuration: 0.1)
+        let fin:SKAction = SKAction.fadeIn(withDuration: 0.1)
+        let seq:SKAction = SKAction.sequence([fot, fin])
+        let fad:SKAction = SKAction.repeatForever(seq)
+        let repeatFade:SKAction = SKAction.repeatForever(fad)
+        over.run(repeatFade)
         self.addChild(over)
+        switchNode(node: self.childNode(withName: "Play")!)
+        switchNode(node: self.childNode(withName: "Reset")!)
+        switchNode(node: nodeA)
+        over.position = player.position
+        nodeA.position.y = nodeB.position.y / 1.4
+        self.childNode(withName: "Reset")!.position.y = nodeA.position.y
+        pointsLabel.position.x = nodeB.position.x
+        pointsLabel.position.y = nodeB.position.y
+        pointsLabel.horizontalAlignmentMode = .center
+        pointsLabel.fontName = "Marion-Bold"
+        playerDead()
+        animatePlayerDead()
         bomb.removeFromParent()
         player.removeFromParent()
-        switchButton(button: self.childNode(withName: "Play")!)
-        perform(#selector(swithRun), with: nil, afterDelay: 0.1)
+        //switchNode(node: player)
     }
     
     private func updateTime(timeUpdate: CFTimeInterval) {
@@ -215,68 +248,85 @@ extension MainScene {
         pointsLabel.position = CGPoint(x:self.frame.maxX - 10, y:self.frame.maxY - 60)
         pointsLabel.zPosition = 9
         self.addChild(pointsLabel)
-        setButton(name: "Play")
-        setButton(name: "Pause")
-        setMenu()
-        switchButton(button: self.childNode(withName: "Pause")!)
-        switchButton(button: self.childNode(withName: "Back")!)
+        setNode(name: "Play")
+        setNode(name: "Pause")
+        setMenu(name: "Back")
+        setMenu(name: "Reset")
+        switchNode(node: self.childNode(withName: "Pause")!)
+        self.childNode(withName: "Pause")!.position.x += 3
+        switchNode(node: self.childNode(withName: "Back")!)
+        self.childNode(withName: "Back")!.position.x += self.childNode(withName: "Back")!.frame.size.width/2 + 5
+        switchNode(node: self.childNode(withName: "Reset")!)
+        self.childNode(withName: "Reset")!.position.x -= self.childNode(withName: "Reset")!.frame.size.width/2 - 5
         points = 0
     }
     
-    private func setButton(name: String) {
-        let button = SKSpriteNode(imageNamed: name)
-        button.position = CGPoint(x:self.frame.minX + 30 , y:self.frame.maxY - 40)
-        button.name = name
-        button.size.height = 40
-        button.size.width = 40
-        button.zPosition = 9
-        self.addChild(button)
+    private func setNode(name: String) {
+        let node = SKSpriteNode(imageNamed: name)
+        node.position = CGPoint(x:self.frame.minX + 30 , y:self.frame.maxY - 40)
+        node.name = name
+        node.size.height = 40
+        node.size.width = 40
+        node.zPosition = 9
+        self.addChild(node)
     }
     
-    private func setMenu() {
-        let button = SKSpriteNode(imageNamed: "Back")
-        button.position = CGPoint(x:self.frame.midX , y:self.frame.midY)
-        button.name = "Back"
-        button.size.height = 60
-        button.size.width = 60
-        button.zPosition = 9
-        self.addChild(button)
+    private func setMenu(name: String) {
+        let node = SKSpriteNode(imageNamed: name)
+        node.position = CGPoint(x:self.frame.midX , y:self.frame.midY)
+        node.name = name
+        node.size.height = 60
+        node.size.width = 60
+        node.zPosition = 9
+        self.addChild(node)
     }
     
-    private func switchButton(button: SKNode) {
-        if (button.isHidden) {
-            button.isHidden = false
-            button.isPaused = false
+    private func switchNode(node: SKNode) {
+        if (node.isHidden) {
+            node.isHidden = false
+            node.isPaused = false
         } else {
-            button.isHidden = true
-            button.isPaused = true
+            node.isHidden = true
+            node.isPaused = true
         }
     }
     
     @objc private func swithRun() {
-        scene?.view?.isPaused = !(scene?.view?.isPaused ?? false)
+        self.isPaused = !(self.isPaused)
     }
     
     private func selectAction(node: SKNode){
         if let name = node.name {
             switch (name) {
             case "Play" :
-                switchButton(button: node)
-                switchButton(button: self.childNode(withName: "Pause")!)
-                switchButton(button: self.childNode(withName: "Back")!)
-                perform(#selector(swithRun), with: nil, afterDelay: 0.1)
+                switchNode(node: node)
+                switchNode(node: self.childNode(withName: "Pause")!)
+                switchNode(node: self.childNode(withName: "Back")!)
+                switchNode(node: self.childNode(withName: "Reset")!)
+                perform(#selector(swithRun), with: nil, afterDelay: 0.05)
                 break
             case "Pause":
-                switchButton(button: node)
-                switchButton(button: self.childNode(withName: "Back")!)
-                switchButton(button: self.childNode(withName: "Play")!)
+                switchNode(node: node)
+                switchNode(node: self.childNode(withName: "Back")!)
+                switchNode(node: self.childNode(withName: "Reset")!)
+                switchNode(node: self.childNode(withName: "Play")!)
                 swithRun()
                 break
             case "Back":
+                self.removeAllChildren()
+                self.removeAllActions()
                 self.removeFromParent()
                 self.view?.presentScene(nil)
                 self.viewController.prepareView()
                 swithRun()
+                break
+            case "Reset":
+                self.removeAllChildren()
+                self.removeAllActions()
+                self.removeFromParent()
+                self.view?.presentScene(nil)
+                self.viewController.setupGameView()
+                //swithRun()
                 break
             default :
                 break
@@ -294,11 +344,11 @@ extension MainScene {
             bgFrame.append(background.textureNamed(bgTextureName))
         }
         bgFrames = bgFrame
-
+        
         let firstFrameTexture = bgFrames[0]
         bg = SKSpriteNode(texture: firstFrameTexture)
-        bg.position = CGPoint(x: view?.bounds.midX ?? 1,y: view?.bounds.midY ?? 1)
-        bg.size = CGSize(width: view?.bounds.width ?? 1, height: view?.bounds.height ?? 1)
+        bg.position = CGPoint(x:self.frame.midX , y:self.frame.midY)
+        bg.size = CGSize(width: self.size.width, height: self.size.height)
         addChild(bg)
     }
     
@@ -308,7 +358,76 @@ extension MainScene {
                              timePerFrame: 0.1,
                              resize: false,
                              restore: true)),
-                 withKey:"skyBG")
+               withKey:"skyBG")
+    }
+    
+    private func playerDead() {
+        let explosion = SKTextureAtlas(named: "Explosion")
+        var pdFrame: [SKTexture] = []
+        
+        let numImages = explosion.textureNames.count
+        for i in (1...numImages) {
+            let pdTextureName = "Explosion-\(i)"
+            pdFrame.append(explosion.textureNamed(pdTextureName))
+        }
+        pdFrames = pdFrame
+        
+        let firstFrameTexture = pdFrames[0]
+        pd = SKSpriteNode(texture: firstFrameTexture)
+        pd.position = CGPoint(x: player.frame.midX , y: player.frame.midY)
+        pd.size = CGSize(width: pd.size.width, height: pd.size.height)
+        addChild(pd)
+    }
+    
+    func animatePlayerDead() {
+        pd.run(SKAction.repeat((
+            SKAction.animate(with: pdFrames,
+                             timePerFrame: 0.1,
+                             resize: false,
+                             restore: true)),
+                               count: 1))
+    }
+    
+    private func gameOver() {
+        
+        let w = self.size.width * 0.75
+        let h = self.size.height * 0.50
+        let form: SKShapeNode = {
+            let shape = SKShapeNode()
+            shape.path = UIBezierPath(roundedRect: CGRect(x: -w/2, y: -h/2, width: w, height: h), cornerRadius: 16).cgPath
+            shape.position = CGPoint(x: self.frame.midX , y: self.frame.midY)
+            shape.fillColor = UIColor.blue
+            shape.strokeColor = UIColor.clear
+            shape.alpha = 0.15
+            shape.zPosition = 5
+            shape.name = "Box"
+            return shape
+        }()
+        self.addChild(form)
+        let go: SKLabelNode = {
+            let label = SKLabelNode()
+            label.text = "Your score:"
+            label.fontColor = UIColor.white
+            label.fontName = "Marion-Bold"
+            label.fontSize = 32
+            label.horizontalAlignmentMode = .center
+            label.zPosition = 6
+            label.name = "EndLabel"
+            return label
+        }()
+        self.addChild(go)
+        go.position.x = form.position.x
+        go.position.y = form.position.y * 1.3
+    }
+    
+    private func playSound() {
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: bgSound as URL)
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("Problem in getting File")
+        }
+        audioPlayer.play()
     }
     
     private func setColor() -> UIColor {

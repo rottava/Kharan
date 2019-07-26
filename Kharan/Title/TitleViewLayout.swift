@@ -20,7 +20,6 @@ extension MainController {
         let titleView = UIImageView()
         titleView.image = UIImage(named: "Background")
         titleView.frame = CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height)
-        //titleView.loadGif(name: "Background")
         view.addSubview(titleView)
         //Constraints
         titleView.translatesAutoresizingMaskIntoConstraints = false
@@ -31,15 +30,17 @@ extension MainController {
     }
 
     private func prepareTitleLabel() {
+        
         let titleLabel: UILabel = {
             let label = UILabel()
             label.text  = "KHARAN"
-            label.textColor = UIColor.blue
-            label.font = UIFont(name: "Zing Rust Demo Base", size: 64)
-            //label.shadowColor = UIColor.black
-            //label.shadowOffset = CGSize(width: 1, height: 2)
+            //label.textColor = UIColor.blue
+            label.textColor = UIColor(patternImage: UIImage (imageLiteralResourceName: "Sunshine"))
+            label.font = UIFont(name: "Zapfino", size: 32)
+            label.shadowColor = UIColor.white
+            label.shadowOffset = CGSize(width: 1, height: 2)
             label.numberOfLines = 0
-            label.textAlignment = .center
+            label.textAlignment = .left
             return label
         }()
         view.addSubview(titleLabel)
@@ -50,13 +51,19 @@ extension MainController {
         let playLabel: UILabel = {
             let label = UILabel()
             label.text  = "Touch to start"
+            label.textColor = UIColor(patternImage: UIImage (imageLiteralResourceName: "CoolBlue"))
+            label.font = UIFont(name: "Marion-Italic", size: 32)
+            label.shadowColor = UIColor.black
+            label.shadowOffset = CGSize(width: 1, height: 2)
+            label.numberOfLines = 0
+            label.textAlignment = .left
             label.textAlignment = .center
             return label
         }()
         view.addSubview(playLabel)
         playLabel.translatesAutoresizingMaskIntoConstraints = false
         playLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        playLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.bounds.height / 3).isActive = true
+        playLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: view.bounds.height / 4).isActive = true
         fadeLabel(view: playLabel, delay: 0)
         
         let playButton: UIButton = {
