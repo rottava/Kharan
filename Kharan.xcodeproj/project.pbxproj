@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3FBD8F7022DE181800805687 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FBD8F6F22DE181800805687 /* AppDelegate.swift */; };
+		3FD9C98322E78CCC000E46A5 /* Zing Rust Demo Base.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3FD9C98222E78CCC000E46A5 /* Zing Rust Demo Base.otf */; };
+		7936A16226050530008242DC /* TitleViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7936A15326050530008242DC /* TitleViewLayout.swift */; };
+		7936A16326050530008242DC /* Background.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15526050530008242DC /* Background.atlas */; };
+		7936A16426050530008242DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15626050530008242DC /* Assets.xcassets */; };
+		7936A16526050530008242DC /* Background.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15826050530008242DC /* Background.wav */; };
+		7936A16626050530008242DC /* Ring.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15926050530008242DC /* Ring.mp3 */; };
+		7936A16726050530008242DC /* Title.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15A26050530008242DC /* Title.wav */; };
+		7936A16826050530008242DC /* Bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15B26050530008242DC /* Bomb.mp3 */; };
+		7936A16926050530008242DC /* Explosion.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 7936A15C26050530008242DC /* Explosion.atlas */; };
+		7936A16A26050530008242DC /* SplashViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7936A15E26050530008242DC /* SplashViewLayout.swift */; };
+		7936A16B26050530008242DC /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7936A16026050530008242DC /* MainController.swift */; };
+		7936A16C26050530008242DC /* MainScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7936A16126050530008242DC /* MainScene.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3FBD8F6C22DE181800805687 /* Kharan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kharan.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FBD8F6F22DE181800805687 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		3FBD8F8122DE181C00805687 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3FD9C98222E78CCC000E46A5 /* Zing Rust Demo Base.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Zing Rust Demo Base.otf"; sourceTree = "<group>"; };
+		7936A15326050530008242DC /* TitleViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleViewLayout.swift; sourceTree = "<group>"; };
+		7936A15526050530008242DC /* Background.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Background.atlas; sourceTree = "<group>"; };
+		7936A15626050530008242DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7936A15826050530008242DC /* Background.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Background.wav; sourceTree = "<group>"; };
+		7936A15926050530008242DC /* Ring.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Ring.mp3; sourceTree = "<group>"; };
+		7936A15A26050530008242DC /* Title.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Title.wav; sourceTree = "<group>"; };
+		7936A15B26050530008242DC /* Bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Bomb.mp3; sourceTree = "<group>"; };
+		7936A15C26050530008242DC /* Explosion.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Explosion.atlas; sourceTree = "<group>"; };
+		7936A15E26050530008242DC /* SplashViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewLayout.swift; sourceTree = "<group>"; };
+		7936A16026050530008242DC /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		7936A16126050530008242DC /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScene.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3FBD8F6922DE181800805687 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3FBD8F6322DE181800805687 = {
+			isa = PBXGroup;
+			children = (
+				3FBD8F6E22DE181800805687 /* Kharan */,
+				3FBD8F6D22DE181800805687 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3FBD8F6D22DE181800805687 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3FBD8F6C22DE181800805687 /* Kharan.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3FBD8F6E22DE181800805687 /* Kharan */ = {
+			isa = PBXGroup;
+			children = (
+				7936A15426050530008242DC /* Assets */,
+				7936A15F26050530008242DC /* Main */,
+				7936A15D26050530008242DC /* Splash */,
+				7936A15226050530008242DC /* Title */,
+				3FBD8F6F22DE181800805687 /* AppDelegate.swift */,
+				3FBD8F8122DE181C00805687 /* Info.plist */,
+				3FD9C98222E78CCC000E46A5 /* Zing Rust Demo Base.otf */,
+			);
+			path = Kharan;
+			sourceTree = "<group>";
+		};
+		7936A15226050530008242DC /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				7936A15326050530008242DC /* TitleViewLayout.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		7936A15426050530008242DC /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				7936A15526050530008242DC /* Background.atlas */,
+				7936A15626050530008242DC /* Assets.xcassets */,
+				7936A15726050530008242DC /* Sounds */,
+				7936A15C26050530008242DC /* Explosion.atlas */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		7936A15726050530008242DC /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				7936A15826050530008242DC /* Background.wav */,
+				7936A15926050530008242DC /* Ring.mp3 */,
+				7936A15A26050530008242DC /* Title.wav */,
+				7936A15B26050530008242DC /* Bomb.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		7936A15D26050530008242DC /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				7936A15E26050530008242DC /* SplashViewLayout.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		7936A15F26050530008242DC /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7936A16026050530008242DC /* MainController.swift */,
+				7936A16126050530008242DC /* MainScene.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3FBD8F6B22DE181800805687 /* Kharan */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3FBD8F8422DE181C00805687 /* Build configuration list for PBXNativeTarget "Kharan" */;
+			buildPhases = (
+				3FBD8F6822DE181800805687 /* Sources */,
+				3FBD8F6922DE181800805687 /* Frameworks */,
+				3FBD8F6A22DE181800805687 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Kharan;
+			productName = Kharan;
+			productReference = 3FBD8F6C22DE181800805687 /* Kharan.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3FBD8F6422DE181800805687 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1240;
+				ORGANIZATIONNAME = "Edson Rottava Júnior";
+				TargetAttributes = {
+					3FBD8F6B22DE181800805687 = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 3FBD8F6722DE181800805687 /* Build configuration list for PBXProject "Kharan" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3FBD8F6322DE181800805687;
+			productRefGroup = 3FBD8F6D22DE181800805687 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3FBD8F6B22DE181800805687 /* Kharan */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3FBD8F6A22DE181800805687 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7936A16826050530008242DC /* Bomb.mp3 in Resources */,
+				3FD9C98322E78CCC000E46A5 /* Zing Rust Demo Base.otf in Resources */,
+				7936A16326050530008242DC /* Background.atlas in Resources */,
+				7936A16426050530008242DC /* Assets.xcassets in Resources */,
+				7936A16926050530008242DC /* Explosion.atlas in Resources */,
+				7936A16526050530008242DC /* Background.wav in Resources */,
+				7936A16726050530008242DC /* Title.wav in Resources */,
+				7936A16626050530008242DC /* Ring.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3FBD8F6822DE181800805687 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7936A16B26050530008242DC /* MainController.swift in Sources */,
+				3FBD8F7022DE181800805687 /* AppDelegate.swift in Sources */,
+				7936A16226050530008242DC /* TitleViewLayout.swift in Sources */,
+				7936A16C26050530008242DC /* MainScene.swift in Sources */,
+				7936A16A26050530008242DC /* SplashViewLayout.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3FBD8F8222DE181C00805687 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				"Texture Atlas Maximum Size" = 4096x4096;
+			};
+			name = Debug;
+		};
+		3FBD8F8322DE181C00805687 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				"Texture Atlas Maximum Size" = 4096x4096;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3FBD8F8522DE181C00805687 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZVFTY55VD6;
+				INFOPLIST_FILE = Kharan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Brave.Kharan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3FBD8F8622DE181C00805687 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZVFTY55VD6;
+				INFOPLIST_FILE = Kharan/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = Brave.Kharan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3FBD8F6722DE181800805687 /* Build configuration list for PBXProject "Kharan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FBD8F8222DE181C00805687 /* Debug */,
+				3FBD8F8322DE181C00805687 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3FBD8F8422DE181C00805687 /* Build configuration list for PBXNativeTarget "Kharan" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3FBD8F8522DE181C00805687 /* Debug */,
+				3FBD8F8622DE181C00805687 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3FBD8F6422DE181800805687 /* Project object */;
+}

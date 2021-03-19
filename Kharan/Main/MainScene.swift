@@ -431,7 +431,7 @@ extension MainScene {
     }
     
     private func setColor() -> UIColor {
-        let color = RAND_MAX % 7
+        let color = Int.random(in: 0...7)
         switch color {
         case 0:
             return UIColor.red
